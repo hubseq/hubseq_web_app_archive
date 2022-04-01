@@ -1,0 +1,28 @@
+{% load i18n %}
+<div class="modal" id="remove-member-modal">
+  <div class="modal-background modal-closer"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">{% if editing_self %}{% trans "Leave team?" %}{% else %}{% trans "Remove team member?" %}{% endif %}</p>
+      <button class="delete modal-closer" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      {% if editing_self %}
+        You will be removed from the team: <em><strong>{{ request.team.name }}</strong></em>.
+        After this, you will no longer be able to access any team pages, and will have to be invited again to regain access.
+      {% else %}
+        This will remove <em><strong>{{ membership.user.get_display_name }}</strong></em> from your team: <em>{{ request.team.name }}</em>.
+        They will no longer be able to access any team pages, and will have to be invited again to regain access.
+      {% endif %}
+    </section>
+    <footer class="modal-card-foot">
+      <form action="{% url 'single_team:remove_team_membership' request.team.slug membership.pk %} " method="post">
+        {% csrf_token %}
+        <button class="button is-danger" type="submit">
+          {% if editing_self %}{% trans "I understand, leave team" %}{% else %}{% trans "I understand, remove team member" %}{% endif %}
+        </button>
+      </form>
+      <button class="button modal-closer ml-2">Cancel</button>
+    </footer>
+  </div>
+</div>

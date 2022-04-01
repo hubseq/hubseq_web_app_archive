@@ -1,0 +1,20 @@
+<div class="modal" id="delete-modal">
+  <div class="modal-background modal-closer"></div>
+  <div class="modal-card">
+    <header class="modal-card-head">
+      <p class="modal-card-title">Really delete team?</p>
+      <button class="delete modal-closer" aria-label="close"></button>
+    </header>
+    <section class="modal-card-body">
+      This will permanently delete the <em><strong>{{ request.team.name }}</strong></em> team and all associated data.
+      <strong>This action cannot be undone.</strong>
+    </section>
+    <footer class="modal-card-foot">
+      <form action="{% url 'single_team:delete_team' request.team.slug %} " method="post">
+        {% csrf_token %}
+        <button class="button is-danger" type="submit">I understand, permanently delete this team</button>
+      </form>
+      <button class="button modal-closer ml-2">Cancel</button>
+    </footer>
+  </div>
+</div>

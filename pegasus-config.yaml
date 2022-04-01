@@ -1,0 +1,22 @@
+default_context:
+  _pegasus_version: '2022.3'
+  author_name: Jerry Chen
+  ci: github_actions
+  css_framework: bulma
+  css_theme: default
+  database: postgres
+  deploy_platform: none
+  description: A bioinformatics hub for all of your sequencing data
+  domain_name: localhost:8000
+  email: jerry@hubseq.com
+  enable_google_login: y
+  front_end_framework: react
+  project_name: HubSeq
+  project_slug: hubseq_web_app
+  stripe_payment_mode: both
+  subscription_billing_model: per_unit
+  use_api_keys: y
+  use_docker: y
+  use_impersonation: n
+  use_subscriptions: y
+  use_teams: y
