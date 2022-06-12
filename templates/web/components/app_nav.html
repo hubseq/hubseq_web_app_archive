@@ -8,8 +8,15 @@
         <span class="icon"><i class="fa fa-home"></i></span><span class="is-hidden-tablet-only">Dashboard</span>
       </a>
     </li>
+    <!-- File Explorer for a user on a team -->
+    <li>
+      <a href="{% url 'files:my_files' %}" {% if active_tab == 'my_files' %}class="is-active"{% endif %}>
+        <span class="icon"><i class="fa fa-rocket"></i></span><span class="is-hidden-tablet-only">My Files</span>
+      </a>
+    </li>
     {% include "web/components/team_nav.html" %}
   </ul>
+  <!--
   <p class="menu-label is-hidden-tablet-only">
     My Account
   </p>
@@ -32,6 +39,7 @@
       </a>
     </li>
   </ul>
+  -->
   <p class="menu-label is-hidden-tablet-only">
     Teams
   </p>

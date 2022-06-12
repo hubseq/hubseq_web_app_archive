@@ -12,6 +12,8 @@ async-timeout==4.0.2
     # via redis
 billiard==3.6.4.0
     # via celery
+boto3==1.18.21
+    # via boto3
 celery[redis]==5.2.3
     # via -r requirements/requirements.in
 celery-progress==0.1.2
@@ -57,6 +59,8 @@ django==3.2.12
 django-allauth==0.50.0
     # via -r requirements/requirements.in
 django-anymail[mailgun]==8.5
+    # via -r requirements/requirements.in
+django-storages==1.12.3
     # via -r requirements/requirements.in
 djangorestframework==3.13.1
     # via -r requirements/requirements.in

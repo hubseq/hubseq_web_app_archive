@@ -1,0 +1,29 @@
+{% extends "web/app/app_base.html" %}
+{% load static %}
+{% block app %}
+<section class="app-card">
+  <div class="content">
+    <h3 class="pg-subtitle">My Files</h3>
+    <p>
+      This is a file explorer.
+    </p>
+  </div>
+</section>
+<section class="app-card">
+  <div class="content">
+    {% block files %}
+    <p>
+      File contents of <b>test</b> directory on S3 (connected to AWS)
+    </p>
+    <ul>
+      {% for d in dirs.0 %}
+        <li><a href="{% url 'files:my_files_subdir' d %}"><b>{{ d }}</b></a></li>
+      {% endfor %}
+      {% for d in dirs.1 %}
+        <li><b><u><a href="https://hubpublicinternal.s3.us-west-2.amazonaws.com/test/{{ d }}" download>{{ d }}</a></u></b></li>
+      {% endfor %}
+    </ul>
+    {% endblock %}
+  </div>
+</section>
+{% endblock %}

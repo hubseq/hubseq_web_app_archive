@@ -44,6 +44,8 @@ urlpatterns = [
     path('pegasus/', include('pegasus.apps.examples.urls')),
     path('pegasus/employees/', include('pegasus.apps.employees.urls')),
     path('celery-progress/', include('celery_progress.urls')),
+    # File explorer
+    path('files/', include('apps.files.urls')),
     # API docs
     # these are needed for schema.js
     path('docs/', include_docs_urls(title='API Docs')),

@@ -1,6 +1,6 @@
 start: ## Start the docker containers
 	@echo "Starting the docker containers"
-	@docker-compose up -d
+	@docker-compose --env-file .env.dev up -d
 	@echo "Containers started - http://localhost:8000"
 
 stop: ## Stop Containers
@@ -37,6 +37,12 @@ npm-build: ## Runs npm build in the container (for production assets)
 
 npm-watch: ## Runs npm watch in the container (recommended for dev)
 	@docker-compose exec web npm run dev-watch
+
+requirements: ## Installs any new packages in requirements.in
+	@pip-compile requirements/requirements.in
+	@pip install -r requirements/requirements.txt
+	@make build
+	@make start
 
 .PHONY: help
 .DEFAULT_GOAL := help

@@ -52,6 +52,7 @@ THIRD_PARTY_APPS = [
     'rest_framework_api_key',
     'celery_progress',
     'djstripe',  # stripe integration
+    'storages',
 ]
 
 PEGASUS_APPS = [
@@ -298,3 +299,10 @@ DJSTRIPE_WEBHOOK_SECRET = os.environ.get('DJSTRIPE_WEBHOOK_SECRET', "whsec_xxx")
 
 DJSTRIPE_FOREIGN_KEY_TO_FIELD = 'id'  # change to 'djstripe_id' if not a new installation
 DJSTRIPE_USE_NATIVE_JSONFIELD = True  # change to False if not a new installation
+
+# django-storage <-> S3
+DEFAULT_FILE_STORAGE = 'storages.backends.s3boto3.S3Boto3Storage'
+# AWS_ACCESS_KEY_ID = 'AKIA2GAAIQQIAHMCKNAQ' # big no-no
+# AWS_SECRET_ACCESS_KEY = '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' # big no-no
+AWS_STORAGE_BUCKET_NAME = 'hubpublicinternal'
+AWS_QUERYSTRING_AUTH = False

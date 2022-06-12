@@ -1,0 +1,16 @@
+{% extends "files/my_files.html" %}
+{% load static %}
+{% block files %}
+<p>
+  File contents of <b>test/{{ subdir_path }}</b> sub-directory on S3 (connected to AWS)
+</p>
+<p><u><a href="{% url 'files:my_files' %}">Go back</a></u>
+<ul>
+  {% for d in dirs.0 %}
+    <li><b><a href="{% url 'files:my_files_subdir' subdir|add:"_-_"|add:d %}">{{ d }}</a></b></li>
+  {% endfor %}
+  {% for d in dirs.1 %}
+    <li><b><u><a href="https://hubpublicinternal.s3.us-west-2.amazonaws.com/test/{{ subdir_path }}{{ d }}" download>{{ d }}</a></u></b></li>
+  {% endfor %}
+</ul>
+{% endblock %}
